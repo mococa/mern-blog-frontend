@@ -4,6 +4,7 @@ import { Markdown } from "../components/Markdown";
 import { PostsContext } from "../context/Posts";
 import { useParams } from "react-router-dom";
 import VotingBar from "../components/VotingBar";
+import CommentSection from "../components/CommentSection";
 
 function PostPage() {
   const { posts } = useContext(PostsContext);
@@ -20,6 +21,7 @@ function PostPage() {
       <HeaderHead />
       <Markdown markdown={post?.content} />
       <VotingBar />
+      <CommentSection post={post} />
     </>
   );
 }

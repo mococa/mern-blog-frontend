@@ -34,11 +34,12 @@ export const StyledHeader = styled.header`
     width: fit-content;
     margin: auto;
     padding: 4px;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: ${(props) =>
+      props.theme.title === "dark" ? "rgba(0, 0, 0, 0.4)" : "transparent"};
   }
-  margin: 100px 20px 40px;
+  margin: 100px 20px 40px !important;
   @media (max-width: 500px) {
-    margin: 100px 12px 40px;
+    margin: 100px 12px 40px !important;
   }
 `;
 export const StyledLabel = styled.header`
@@ -180,5 +181,67 @@ export const StyledEmoji = styled.span`
   }
   &:hover {
     background: rgba(0, 0, 0, 0.1);
+  }
+`;
+export const StyledCommentSection = styled.section`
+  max-width: 720px;
+  display: flex;
+  flex-flow: column;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 12px;
+  @media (max-width: 500px) {
+    max-width: unset;
+  }
+`;
+export const StyledCommentInput = styled.div`
+  display: flex;
+  gap: 8px;
+  & > img {
+    border-radius: 8px;
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
+  }
+  & > div {
+    display: flex;
+    flex-flow: column;
+    gap: 8px;
+    flex: 1;
+    & > span,
+    b {
+      font-size: 14px;
+    }
+    & > div {
+      display: flex;
+      flex-flow: column;
+      gap: 8px;
+      & > textarea {
+        width: fill-available;
+      }
+      & > button {
+        width: 100px;
+        place-self: flex-end;
+        padding: 4px;
+        visibility: ${(props) => (props.writing ? "visible" : "hidden")};
+      }
+    }
+  }
+`;
+export const StyledComment = styled.div`
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+  & > img {
+    border-radius: 8px;
+    height: 48px;
+    width: 48px;
+    object-fit: cover;
+  }
+  & > div {
+    display: flex;
+    flex-flow: column;
+    & > span {
+      opacity: 0.8;
+    }
   }
 `;

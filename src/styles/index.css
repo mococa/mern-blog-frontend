@@ -10,7 +10,14 @@ body {
 code {
   border-radius: 4px;
 }
-
+img,
+svg {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
 a,
 a:hover,
 a:focus,
@@ -28,5 +35,15 @@ span.vote-emoji[title]:hover:after {
   left: 0;
   top: 100%;
   z-index: 1;
-  background:red;
+  background: red;
+}
+#root
+  > *:not(header:first-of-type):not(div:first-of-type):not(div:nth-of-type(2):not(.markdown-root)) {
+  margin: 24px;
+}
+@media (max-width: 500px) {
+  #root
+    > *:not(header:first-of-type):not(div:first-of-type):not(div:nth-of-type(2):not(.markdown-root)) {
+    margin: 12px;
+  }
 }

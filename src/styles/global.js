@@ -15,4 +15,13 @@ export default createGlobalStyle`
             color: ${({ theme }) => shade(0.5, theme.colors.text)};
         }
     }
+    input, textarea{
+        padding: 4px 8px;
+        border-radius: 4px;
+        border: none;
+        outline: none;
+        resize: none;
+        background-color: ${({ theme }) => theme.colors.absolute};
+        color: ${({ theme }) => theme.colors.text};
+    }
 `;

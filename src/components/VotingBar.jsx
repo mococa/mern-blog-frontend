@@ -11,7 +11,7 @@ function VotingBar() {
           <VotingEmoji
             key={reaction.value}
             emoji={reaction.emoji}
-            title={reaction.title}
+            title={reaction.label}
             onClick={() => {
               console.log(reaction.value);
             }}

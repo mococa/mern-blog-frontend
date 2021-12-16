@@ -4,6 +4,7 @@ export const LIGHT_THEME = {
     background: "#f4f3f4",
     text: "#222",
     darker: "#e8e8e8",
+    absolute: "#ffffff",
     lighter: "#ffffff",
     link: "#5c9abd",
     notification: "#ad4747",
