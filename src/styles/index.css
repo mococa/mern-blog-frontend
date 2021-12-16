@@ -21,3 +21,12 @@ a:active {
 .markdown-root * {
   margin-bottom: 8px;
 }
+span.vote-emoji[title]:hover:after {
+  content: attr(title);
+  padding: 40px 8px;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  z-index: 1;
+  background:red;
+}

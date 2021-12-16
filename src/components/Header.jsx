@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { ThemeContext } from "../context/Theme";
 import { StyledHeader, StyledHeaderHead } from "./styles";
@@ -6,10 +6,23 @@ export const HeaderHead = ({ username }) => {
   const { theme, setTheme } = useContext(ThemeContext);
   const navigate = useNavigate();
   const params = useParams();
-  console.log({ params });
+  const [scrollPosition, setScrollPosition] = useState(window.scrollY);
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <StyledHeaderHead>
+      <StyledHeaderHead transparent={scrollPosition < 174}>
         {Object.keys(params).length > 0 && (
           <div
             style={{ marginRight: "auto", cursor: "pointer" }}

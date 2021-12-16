@@ -10,4 +10,7 @@ export class PostsAPI {
   static async getById({ id }) {
     return request.get(`/posts?id=${id}`);
   }
+  static async react({ reaction, post }) {
+    return request.put({ reaction, post });
+  }
 }

@@ -5,12 +5,15 @@ export const StyledHeaderHead = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.4);
+  transition: 100ms;
+  background: ${(props) =>
+    props.transparent ? "rgba(0, 0, 0, 0.4)" : "black"};
   justify-content: flex-end;
   padding: 8px;
   gap: 8px;
   align-items: center;
   color: white;
+  z-index: 10;
   & img {
     filter: invert(1);
   }
@@ -30,6 +33,8 @@ export const StyledHeader = styled.header`
     display: block;
     width: fit-content;
     margin: auto;
+    padding: 4px;
+    background-color: rgba(0, 0, 0, 0.4);
   }
   margin: 100px 20px 40px;
   @media (max-width: 500px) {
@@ -50,6 +55,17 @@ export const StyledSectionRoot = styled.div`
     min-width: 100%;
     min-height: unset;
     height: 96px;
+    position: sticky;
+    top: 34px;
+    background-color: ${(props) => props.theme.colors.background};
+    z-index: 10;
+  }
+  & > header,
+  section {
+    position: sticky;
+  }
+  & > header {
+    top: 50px;
   }
 `;
 export const StyledSection = styled.section`
@@ -57,12 +73,14 @@ export const StyledSection = styled.section`
   gap: 8px;
   flex-flow: column;
   padding: 12px 0;
+  top: 74px;
   @media (max-width: 500px) {
     flex: 1;
     height: 48px;
     gap: 24px;
     flex-flow: row;
     overflow: auto;
+    position: relative;
   }
   & > span {
     opacity: ${(props) => (props.nav ? 0.4 : 1)};
@@ -77,16 +95,17 @@ export const StyledSection = styled.section`
     }
   }
 `;
-export const Posts = styled.section`
+export const Posts = styled.ul`
   display: flex;
   flex-flow: column;
   width: calc(100% - 300px);
   gap: 12px;
+  padding: 0;
   @media (max-width: 500px) {
     width: auto;
   }
 `;
-export const StyledPost = styled.div`
+export const StyledPost = styled.li`
   display: flex;
   flex-flow: column;
   padding: 12px;
@@ -129,5 +148,37 @@ export const StyledPostContent = styled.section`
   -webkit-line-clamp: 3;
   line-clamp: 3;
   -webkit-box-orient: vertical;
-  margin-bottom: 12px;
+`;
+export const StyledVotingBar = styled.div`
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  background-color: ${({ theme }) => theme.colors.text};
+  border-radius: 12px;
+  margin: 12px;
+  padding: 4px;
+`;
+export const StyledEmoji = styled.span`
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 200ms;
+  user-select: none;
+  filter: ${(props) =>
+    props.clicking ? "brightness(75%)" : "brightness(100%)"};
+  background: rgba(0, 0, 0, 0);
+  &::after {
+    position: absolute;
+    padding: 4px;
+    font-size: 14px;
+    top: 0;
+    content: "${(props) => props.count || 0}";
+    color: ${({ theme }) => theme.colors.notificationText};
+    background-color: ${({ theme }) => theme.colors.notification};
+    border-radius: 50%;
+  }
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
 `;

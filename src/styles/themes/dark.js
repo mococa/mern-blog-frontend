@@ -6,5 +6,7 @@ export const DARK_THEME = {
     darker: "#1d1d1d",
     lighter: "#2d2d2d",
     link: "#98d6f9",
+    notification: "#ad4747",
+    notificationText: "white",
   },
 };

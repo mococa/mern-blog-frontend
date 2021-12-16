@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import Header, { HeaderHead } from "../components/Header";
+import { HeaderHead } from "../components/Header";
 import { Markdown } from "../components/Markdown";
 import { PostsContext } from "../context/Posts";
 import { useParams } from "react-router-dom";
-import { StyledHeaderHead } from "../components/styles";
+import VotingBar from "../components/VotingBar";
 
 function PostPage() {
   const { posts } = useContext(PostsContext);
@@ -14,11 +14,12 @@ function PostPage() {
     if (posts) {
       setPost(posts.find((item) => item.slug === params.slug));
     }
-  }, [posts]);
+  }, [posts, params.slug]);
   return (
     <>
       <HeaderHead />
       <Markdown markdown={post?.content} />
+      <VotingBar />
     </>
   );
 }
