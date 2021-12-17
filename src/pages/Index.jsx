@@ -11,17 +11,7 @@ function IndexPage() {
     <>
       <Header />
       <div style={{ display: "flex", flexWrap: "wrap" }}>
-        <Sections
-          sections={[
-            "Javascript",
-            "C#",
-            "Java",
-            "Perl",
-            "HTML",
-            "CSS",
-            "DevOps",
-          ]}
-        />
+        <Sections />
         <Posts>
           {posts?.map((post) => (
             <Post

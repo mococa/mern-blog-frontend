@@ -78,7 +78,7 @@ export const StyledSection = styled.section`
   @media (max-width: 500px) {
     flex: 1;
     height: 48px;
-    gap: 24px;
+    gap: 36px;
     flex-flow: row;
     overflow: auto;
     position: relative;
@@ -184,14 +184,17 @@ export const StyledEmoji = styled.span`
   }
 `;
 export const StyledCommentSection = styled.section`
-  max-width: 720px;
+  //max-width: 720px;
+  width: 60%;
   display: flex;
   flex-flow: column;
   background-color: ${({ theme }) =>
     theme.title === "dark" ? "rgba(0,0,0,0.4)" : "rgba(0,0,0,0.05)"};
-  padding: 12px;
+  padding: 24px;
+  border-radius: 4px;
   @media (max-width: 500px) {
     max-width: unset;
+    width: calc(100% - 24px);
   }
 `;
 export const StyledCommentInput = styled.div`

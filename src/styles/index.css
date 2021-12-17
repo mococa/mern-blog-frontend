@@ -27,6 +27,8 @@ a:active {
 }
 .markdown-root > * {
   margin-bottom: 8px;
+}
+.markdown-root *{
   max-width: 100%;
 }
 .markdown-root h3,
@@ -41,7 +43,9 @@ blockquote {
 }
 p > code {
   color: rgb(211, 56, 56);
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 2px;
+  padding: 2px;
 }
 b,
 strong {

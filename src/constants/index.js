@@ -20,3 +20,16 @@ export const REACTIONS = [
     value: "sad",
   },
 ];
+export const TAGS = [
+  "Node",
+  "JavaScript",
+  "React",
+  "HTML",
+  "CSS",
+  "Mongo",
+  "SQL",
+  "Bash",
+  "Python",
+  "DevOps",
+  "GIT",
+].sort();

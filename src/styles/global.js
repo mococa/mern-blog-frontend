@@ -16,7 +16,7 @@ export default createGlobalStyle`
         }
     }
     input, textarea{
-        padding: 4px 8px;
+        padding: 8px 16px;
         border-radius: 4px;
         border: none;
         outline: none;
