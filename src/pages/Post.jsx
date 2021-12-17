@@ -20,7 +20,7 @@ function PostPage() {
     <>
       <HeaderHead />
       <Markdown markdown={post?.content} />
-      <VotingBar />
+      <VotingBar post={post} />
       <CommentSection post={post} />
     </>
   );

@@ -25,7 +25,7 @@ a:active {
   text-decoration: none;
   color: inherit;
 }
-.markdown-root * {
+.markdown-root > * {
   margin-bottom: 8px;
   max-width: 100%;
 }
@@ -37,7 +37,7 @@ h1 {
 blockquote {
   background: rgba(0, 0, 0, 0.075);
   padding: 12px;
-  border-left: 12px solid rgba(256, 0, 0, 0.35);
+  border-left: 12px solid #ed7373;
 }
 p > code {
   color: rgb(211, 56, 56);

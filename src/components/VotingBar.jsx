@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { REACTIONS } from "../constants";
 import { StyledEmoji, StyledLabel, StyledVotingBar } from "./styles";
 
-function VotingBar() {
+function VotingBar({ post }) {
+  if (!post) return null;
   return (
     <>
       <StyledLabel style={{ marginTop: 60 }}>
