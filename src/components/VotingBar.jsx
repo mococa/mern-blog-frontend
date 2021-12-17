@@ -5,7 +5,9 @@ import { StyledEmoji, StyledLabel, StyledVotingBar } from "./styles";
 function VotingBar() {
   return (
     <>
-      <StyledLabel>What do you think about it?</StyledLabel>
+      <StyledLabel style={{ marginTop: 60 }}>
+        What do you think about it?
+      </StyledLabel>
       <StyledVotingBar>
         {REACTIONS.map((reaction) => (
           <VotingEmoji

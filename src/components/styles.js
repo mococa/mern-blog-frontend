@@ -5,7 +5,7 @@ export const StyledHeaderHead = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  transition: 100ms;
+  transition: 300ms;
   background: ${(props) =>
     props.transparent ? "rgba(0, 0, 0, 0.4)" : "black"};
   justify-content: flex-end;
@@ -103,7 +103,7 @@ export const Posts = styled.ul`
   gap: 12px;
   padding: 0;
   @media (max-width: 500px) {
-    width: auto;
+    width: fill-available;
   }
 `;
 export const StyledPost = styled.li`
@@ -187,7 +187,8 @@ export const StyledCommentSection = styled.section`
   max-width: 720px;
   display: flex;
   flex-flow: column;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: ${({ theme }) =>
+    theme.title === "dark" ? "rgba(0,0,0,0.4)" : "rgba(0,0,0,0.05)"};
   padding: 12px;
   @media (max-width: 500px) {
     max-width: unset;

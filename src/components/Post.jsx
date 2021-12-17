@@ -26,6 +26,8 @@ function Post({ subject, title, content, slug, tags = [] }) {
             h1: "span",
             h2: "span",
             h3: "span",
+            img: "span",
+            hr: "span"
           }}
         >
           {content}

@@ -27,6 +27,25 @@ a:active {
 }
 .markdown-root * {
   margin-bottom: 8px;
+  max-width: 100%;
+}
+.markdown-root h3,
+h2,
+h1 {
+  margin: 36px 0 16px;
+}
+blockquote {
+  background: rgba(0, 0, 0, 0.075);
+  padding: 12px;
+  border-left: 12px solid rgba(256, 0, 0, 0.35);
+}
+p > code {
+  color: rgb(211, 56, 56);
+  background-color: rgba(0, 0, 0, 0.04);
+}
+b,
+strong {
+  font-weight: 500;
 }
 span.vote-emoji[title]:hover:after {
   content: attr(title);
@@ -39,7 +58,7 @@ span.vote-emoji[title]:hover:after {
 }
 #root
   > *:not(header:first-of-type):not(div:first-of-type):not(div:nth-of-type(2):not(.markdown-root)) {
-  margin: 24px;
+  margin: 24px 20%;
 }
 @media (max-width: 500px) {
   #root

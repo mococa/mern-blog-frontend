@@ -7,7 +7,7 @@ import {
 } from "./styles";
 
 function CommentSection({ post }) {
-  if (!post) return;
+  if (!post) return null;
   return (
     <>
       {!post.comments?.length && (
