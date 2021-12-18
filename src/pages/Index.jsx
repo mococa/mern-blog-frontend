@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Header from "../components/Header";
+import Page from "../components/Page";
 import Post from "../components/Post";
 import Sections from "../components/Sections";
 import { Posts } from "../components/styles";
@@ -8,8 +9,7 @@ import { PostsContext } from "../context/Posts";
 function IndexPage() {
   const { posts } = useContext(PostsContext);
   return (
-    <>
-      <Header />
+    <Page home>
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         <Sections />
         <Posts>
@@ -25,7 +25,7 @@ function IndexPage() {
           ))}
         </Posts>
       </div>
-    </>
+    </Page>
   );
 }
 

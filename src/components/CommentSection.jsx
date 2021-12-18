@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { getTime } from "../helpers";
 import {
   StyledComment,
   StyledCommentInput,
@@ -21,7 +22,9 @@ function CommentSection({ post }) {
         <StyledComment>
           <img src="/src/python.svg" alt="Profile picture" />
           <div>
-            <header>Username</header>
+            <header>
+              Username<sub>{getTime(new Date())}</sub>
+            </header>
             <span>Actual comment</span>
           </div>
         </StyledComment>
@@ -44,7 +47,7 @@ function CommentSectionInput() {
             onChange={({ target }) => setComment(target.value)}
             placeholder="Write here..."
             multiline
-            rows="5"
+            rows="2"
           ></textarea>
           <button>Send</button>
         </div>

@@ -24,4 +24,7 @@ export default createGlobalStyle`
         background-color: ${({ theme }) => theme.colors.absolute};
         color: ${({ theme }) => theme.colors.text};
     }
+    hr{
+        margin: 16px 0;
+    }
 `;

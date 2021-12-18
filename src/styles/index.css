@@ -28,13 +28,22 @@ a:active {
 .markdown-root > * {
   margin-bottom: 8px;
 }
-.markdown-root *{
+.markdown-root * {
   max-width: 100%;
 }
 .markdown-root h3,
 h2,
 h1 {
-  margin: 36px 0 16px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.markdown-root h2 {
+  font-size: 1.75rem;
+  line-height: 2rem;
+}
+.markdown-root h3 {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 blockquote {
   background: rgba(0, 0, 0, 0.075);
@@ -69,4 +78,16 @@ span.vote-emoji[title]:hover:after {
     > *:not(header:first-of-type):not(div:first-of-type):not(div:nth-of-type(2):not(.markdown-root)) {
     margin: 12px;
   }
+}
+
+#toastr-root {
+  position: fixed;
+  bottom: 0;
+  z-index: 11;
+}
+.toastr-container {
+  gap: 8px;
+  display: flex;
+  flex-flow: column-reverse;
+  margin: 8px;
 }

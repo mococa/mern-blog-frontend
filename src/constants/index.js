@@ -1,5 +1,10 @@
 export const REACTIONS = [
   {
+    label: "Like",
+    emoji: "👍",
+    value: "like",
+  },
+  {
     label: "Wow!",
     emoji: "😲",
     value: "wow",
@@ -19,6 +24,11 @@ export const REACTIONS = [
     emoji: "😢",
     value: "sad",
   },
+  {
+    label: "Grr",
+    emoji: "😡",
+    value: "grr",
+  },
 ];
 export const TAGS = [
   "Node",
@@ -33,3 +43,17 @@ export const TAGS = [
   "DevOps",
   "GIT",
 ].sort();
+export const MONTH_NAMES = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];

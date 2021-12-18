@@ -9,7 +9,7 @@ export const StyledHeaderHead = styled.header`
   background: ${(props) =>
     props.transparent ? "rgba(0, 0, 0, 0.4)" : "black"};
   justify-content: flex-end;
-  padding: 8px;
+  padding: 8px 16px;
   gap: 8px;
   align-items: center;
   color: white;
@@ -37,15 +37,18 @@ export const StyledHeader = styled.header`
     background-color: ${(props) =>
       props.theme.title === "dark" ? "rgba(0, 0, 0, 0.4)" : "transparent"};
   }
-  margin: 100px 20px 40px !important;
-  @media (max-width: 500px) {
-    margin: 100px 12px 40px !important;
-  }
+  padding: 80px 20px 60px;
+  margin: 0 0 16px !important;
+  background: ${(props) =>
+    props.theme.title === "dark"
+      ? "rgba(256,256,256,0.02)"
+      : "rgba(0, 0, 0, 0.04)"};
 `;
 export const StyledLabel = styled.header`
   font-size: 20px;
 `;
 export const StyledSectionRoot = styled.div`
+  border-radius: 6px;
   padding: 12px 24px;
   min-width: 128px;
   width: 15%;
@@ -73,14 +76,16 @@ export const StyledSection = styled.section`
   display: flex;
   gap: 8px;
   flex-flow: column;
-  padding: 12px 0;
+  padding: 12px 8px;
   top: 74px;
+  overflow-y: hidden;
+
   @media (max-width: 500px) {
     flex: 1;
     height: 48px;
     gap: 36px;
     flex-flow: row;
-    overflow: auto;
+    overflow-x: auto;
     position: relative;
   }
   & > span {
@@ -112,7 +117,6 @@ export const StyledPost = styled.li`
   padding: 12px;
   & > hr {
     margin: 12px 0;
-    border-color: ${(props) => shade(0.5, props.theme.colors.text)};
   }
   & > span {
     &:nth-of-type(1) {
@@ -154,13 +158,25 @@ export const StyledVotingBar = styled.div`
   display: flex;
   gap: 16px;
   justify-content: center;
-  background-color: ${({ theme }) => theme.colors.text};
+  background-color: white;
   border-radius: 12px;
-  margin: 12px;
-  padding: 4px;
+  margin: 12px 0 24px;
+  padding: 4px 12px;
+  overflow: auto;
+  @media (max-width: 500px) {
+    justify-content: flex-start;
+  }
 `;
 export const StyledEmoji = styled.span`
   font-size: 24px;
+  @media (max-width: 500px) {
+    font-size: 18px;
+  }
+  &:last-of-type {
+    @media (max-width: 500px) {
+      margin-right: 12px;
+    }
+  }
   padding: 10px;
   cursor: pointer;
   border-radius: 10px;
@@ -173,6 +189,9 @@ export const StyledEmoji = styled.span`
     position: absolute;
     padding: 4px;
     font-size: 14px;
+    @media (max-width: 500px) {
+      font-size: 12px;
+    }
     top: 0;
     content: "${(props) => props.count || 0}";
     color: ${({ theme }) => theme.colors.notificationText};
@@ -184,18 +203,13 @@ export const StyledEmoji = styled.span`
   }
 `;
 export const StyledCommentSection = styled.section`
-  //max-width: 720px;
-  width: 60%;
+  width: 100%;
   display: flex;
   flex-flow: column;
-  background-color: ${({ theme }) =>
-    theme.title === "dark" ? "rgba(0,0,0,0.4)" : "rgba(0,0,0,0.05)"};
+  background-color: ${({ theme }) => theme.colors.secondary};
   padding: 24px;
   border-radius: 4px;
-  @media (max-width: 500px) {
-    max-width: unset;
-    width: calc(100% - 24px);
-  }
+  margin-top: 16px;
 `;
 export const StyledCommentInput = styled.div`
   display: flex;
@@ -244,6 +258,15 @@ export const StyledComment = styled.div`
   & > div {
     display: flex;
     flex-flow: column;
+    & > header {
+      font-weight: 500;
+      & > sub {
+        vertical-align: baseline;
+        opacity: 0.5;
+        font-size: 11px;
+        margin-left: 4px;
+      }
+    }
     & > span {
       opacity: 0.8;
     }

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { ThemeContext } from "../context/Theme";
+import { ToastrContext } from "../context/Toastr";
 import { StyledHeader, StyledHeaderHead } from "./styles";
 export const HeaderHead = ({ username }) => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -11,7 +12,6 @@ export const HeaderHead = ({ username }) => {
     const position = window.pageYOffset;
     setScrollPosition(position);
   };
-
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
 
@@ -43,7 +43,7 @@ export const HeaderHead = ({ username }) => {
         />
         <span>{username ? "Logout" : "Login"}</span>
       </StyledHeaderHead>
-      <div style={{ margin: 48 }}></div>
+      <div style={{ margin: 34 }}></div>
     </>
   );
 };

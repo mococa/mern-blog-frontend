@@ -6,7 +6,7 @@ function VotingBar({ post }) {
   if (!post) return null;
   return (
     <>
-      <StyledLabel style={{ marginTop: 60 }}>
+      <StyledLabel>
         What do you think about it?
       </StyledLabel>
       <StyledVotingBar>
