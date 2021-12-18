@@ -6,28 +6,25 @@ export const ToastrContext = createContext({});
 
 export const ToastrProvider = ({ children }) => {
   const [toastrs, setToastrs] = useState([]);
-  //console.log({ toastrDOM });
   useEffect(() => {
     ReactDOM.render(
-      <>
-        <div className="toastr-container">
-          {toastrs?.map((toastr) => (
-            <ToastrComponent
-              id={toastr.id}
-              key={toastr.id}
-              type={toastr.type}
-              title={toastr.title}
-              message={toastr.message}
-              delay={toastr.delay}
-              onClose={(id) => {
-                setToastrs((previousToastrs) =>
-                  previousToastrs.filter((tstr) => tstr.id !== id)
-                );
-              }}
-            />
-          ))}
-        </div>
-      </>,
+      <div className="toastr-container">
+        {toastrs?.map((toastr) => (
+          <ToastrComponent
+            id={toastr.id}
+            key={toastr.id}
+            type={toastr.type}
+            title={toastr.title}
+            message={toastr.message}
+            delay={toastr.delay}
+            onClose={(id) => {
+              setToastrs((previousToastrs) =>
+                previousToastrs.filter((tstr) => tstr.id !== id)
+              );
+            }}
+          />
+        ))}
+      </div>,
       document.getElementById("toastr-root")
     );
   }, [toastrs]);

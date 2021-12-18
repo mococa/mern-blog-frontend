@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { ThemeContext } from "../context/Theme";
-import { ToastrContext } from "../context/Toastr";
 import { StyledHeader, StyledHeaderHead } from "./styles";
 export const HeaderHead = ({ username }) => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -19,7 +18,15 @@ export const HeaderHead = ({ username }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
+  const loginLogout = () => {
+    if (username) {
+      //* Logout
+    } else {
+      //* Login
+      sessionStorage.setItem("redirect", window.location.href);
+      navigate("/auth");
+    }
+  };
   return (
     <>
       <StyledHeaderHead transparent={scrollPosition < 174}>
@@ -41,7 +48,7 @@ export const HeaderHead = ({ username }) => {
           src={`/src/${theme === "dark" ? "sun" : "moon"}.svg`}
           alt="theme toggle"
         />
-        <span>{username ? "Logout" : "Login"}</span>
+        <span onClick={loginLogout}>{username ? "Logout" : "Login"}</span>
       </StyledHeaderHead>
       <div style={{ margin: 34 }}></div>
     </>

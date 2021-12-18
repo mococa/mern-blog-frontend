@@ -272,3 +272,42 @@ export const StyledComment = styled.div`
     }
   }
 `;
+export const StyledAuthForm = styled.section`
+  display: flex;
+  flex-flow: column;
+  gap: 12px;
+  max-width: 450px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 12px;
+`;
+export const StyledAuthFormHeader = styled.header`
+  display: flex;
+  justify-content: flex-end;
+  gap: 24px;
+  & > span {
+    cursor: pointer;
+  }
+`;
+export const StyledAuthInnerForm = styled.form`
+  display: flex;
+  flex-flow: column;
+  gap: 8px;
+  margin-top: 12px;
+  & input {
+    font-size: 16px;
+  }
+  & > button {
+    margin-top: 18px;
+  }
+`;
+export const StyledAuthBanner = styled.main`
+  flex: 0.85;
+  width: fill-available;
+  display: flex;
+  flex-flow: column;
+  background-color: ${({ theme }) => theme.colors.secondary};
+  @media (max-width: 500px) {
+    display: none;
+  }
+`;

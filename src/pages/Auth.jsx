@@ -1,11 +1,16 @@
-import React from 'react'
+import React from "react";
+import AuthBanner from "../components/AuthBanner";
+import AuthForm from "../components/AuthForm";
+import Page from "../components/Page";
+import { StyledLabel } from "../components/styles";
 
-function Auth() {
-    return (
-        <div>
-            
-        </div>
-    )
+function AuthPage() {
+  return (
+    <Page noHeader width="100%" row>
+      <AuthBanner />
+      <AuthForm />
+    </Page>
+  );
 }
 
-export default Auth
+export default AuthPage;
