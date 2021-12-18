@@ -1,5 +1,6 @@
 import { MONTH_NAMES } from "../constants";
 
+/**# Dates #**/
 export const daysPassed = (date) => {
   //? One day in milliseconds
   const oneDay = 1000 * 60 * 60 * 24;
@@ -46,3 +47,24 @@ export const ordinal = (number) => {
       return "th";
   }
 };
+/**# Error #**/
+export const errorHandler = (err) => {
+  return err.response?.data?.message || "An unexpected error occured";
+};
+
+/**# Cookies #**/
+export function getCookie(key) {
+  var b = document.cookie.match("(^|;)\\s*" + key + "\\s*=\\s*([^;]+)");
+  return b ? b.pop() : "";
+}
+export function clearAllCookies() {
+  document.cookie.replace(/(?<=^|;).+?(?=\=|;|$)/g, (name) =>
+    window.location.hostname
+      .split(/\.(?=[^.]+\.)/)
+      .map((domain) => (domain.startsWith("localhost") ? domain : `.${domain}`))
+      .map(
+        (domain) =>
+          (document.cookie = `${name}=;max-age=0;path=/;domain=${domain}`)
+      )
+  );
+}

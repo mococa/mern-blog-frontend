@@ -11,6 +11,6 @@ export class PostsAPI {
     return request.get(`/posts?id=${id}`);
   }
   static async react({ reaction, post }) {
-    return request.put({ reaction, post });
+    return request.put("/vote", { reaction, post });
   }
 }

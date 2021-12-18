@@ -1,5 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
-import { getTime } from "../helpers";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { CommentAPI } from "../api/comment";
+import { PostsContext } from "../context/Posts";
+import { UserContext } from "../context/User";
+import { errorHandler, getTime } from "../helpers";
+import { useToastr } from "../hooks/Toastr";
 import {
   StyledComment,
   StyledCommentInput,
@@ -18,40 +22,74 @@ function CommentSection({ post }) {
         </>
       )}
       <StyledCommentSection>
-        <CommentSectionInput />
-        <StyledComment>
-          <img src="/src/python.svg" alt="Profile picture" />
-          <div>
-            <header>
-              Username<sub>{getTime(new Date())}</sub>
-            </header>
-            <span>Actual comment</span>
-          </div>
-        </StyledComment>
+        <CommentSectionInput postId={post?._id} />
+        {post.comments
+          ?.map((comment) => (
+            <StyledComment key={comment._id}>
+              <img
+                src={comment.author.profilePicture || "/src/python.svg"}
+                alt="Profile picture"
+              />
+              <div>
+                <header title={comment.author.name}>
+                  {comment.author.username}
+                  <sub>{getTime(comment.createdAt)}</sub>
+                </header>
+                <span>{comment.content}</span>
+              </div>
+            </StyledComment>
+          ))
+          .reverse()}
       </StyledCommentSection>
     </>
   );
 }
-function CommentSectionInput() {
+function CommentSectionInput({ postId }) {
   const [comment, setComment] = useState("");
+  const { user } = useContext(UserContext);
+  const { posts, setPosts } = useContext(PostsContext);
+  const Toastr = useToastr();
+  const sendComment = () => {
+    CommentAPI.create({ content: comment, postId })
+      .then(({ data }) => {
+        setPosts(
+          posts.map((post) => {
+            if (post._id === postId) {
+              post.comments = data;
+            }
+            return post;
+          })
+        );
+        setComment("");
+      })
+      .catch((err) => Toastr.error({ message: errorHandler(err) }));
+  };
   return (
     <StyledCommentInput writing={!!comment}>
-      <img src="/src/node.svg" alt="" />
-      <div>
-        <span>
-          Name: <b>Luiz</b>
+      {user ? (
+        <>
+          <img src="/src/node.svg" alt="" />
+          <div>
+            <span>
+              Username: <b>{user.username}</b>
+            </span>
+            <div>
+              <textarea
+                value={comment}
+                onChange={({ target }) => setComment(target.value)}
+                placeholder="Write here..."
+                multiline
+                rows="2"
+              ></textarea>
+              <button onClick={sendComment}>Send</button>
+            </div>
+          </div>
+        </>
+      ) : (
+        <span style={{ marginBottom: 16 }}>
+          You need to be logged in to comment here
         </span>
-        <div>
-          <textarea
-            value={comment}
-            onChange={({ target }) => setComment(target.value)}
-            placeholder="Write here..."
-            multiline
-            rows="2"
-          ></textarea>
-          <button>Send</button>
-        </div>
-      </div>
+      )}
     </StyledCommentInput>
   );
 }

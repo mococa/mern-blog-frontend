@@ -1,9 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { ThemeContext } from "../context/Theme";
+import { UserContext } from "../context/User";
+import { clearAllCookies } from "../helpers";
 import { StyledHeader, StyledHeaderHead } from "./styles";
 export const HeaderHead = ({ username }) => {
   const { theme, setTheme } = useContext(ThemeContext);
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
   const params = useParams();
   const [scrollPosition, setScrollPosition] = useState(window.scrollY);
@@ -21,9 +24,11 @@ export const HeaderHead = ({ username }) => {
   const loginLogout = () => {
     if (username) {
       //* Logout
+      clearAllCookies();
+      setUser(null);
     } else {
       //* Login
-      sessionStorage.setItem("redirect", window.location.href);
+      sessionStorage.setItem("redirect", window.location.pathname);
       navigate("/auth");
     }
   };
@@ -60,7 +65,7 @@ function Header({ username }) {
       <HeaderHead username={username} />
       <StyledHeader>
         <h1>
-          {username ? `Welcome back, ${username} ` : "Hello, stranger "}
+          {username ? `Welcome back, ${username.split(' ')[0]} ` : "Hello, stranger"}{" "}
           <span class="wave">👋</span>
         </h1>
         <span>What would you like to read today?</span>

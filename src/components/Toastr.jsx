@@ -18,11 +18,11 @@ function ToastrComponent({
   onClose = () => {},
 }) {
   useEffect(() => {
-    setTimeout(() => onClose(id), delay || 3000);
+    setTimeout(() => onClose(id), delay || 20000);
   }, [id, delay, onClose]);
 
   return (
-    <StyledToastr type={type} id={id}>
+    <StyledToastr type={type} id={id} className=".fade-in">
       {type === "success" && <MdCheckCircle />}
       {type === "error" && <MdError />}
       {type === "info" && <MdInfo />}
@@ -46,16 +46,19 @@ const colors = {
   warning: "#f5b840",
 };
 const StyledToastr = styled.div`
+  animation: fadeIn 0.2s;
   color: black;
   background-color: ${(props) => lighten(0.25, colors[props.type])};
   border-left: 8px solid ${(props) => colors[props.type]};
   display: grid;
   grid-auto-flow: row;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 1fr 7fr;
   grid-column-gap: 8px;
+  position: relative;
   box-sizing: content-box;
   border-radius: 4px;
-  width: 200px;
+  min-width: fit-content;
+  width: 40%;
   height: 35px;
   padding: 8px;
   font-size: 14px;
@@ -63,6 +66,7 @@ const StyledToastr = styled.div`
     font-weight: 500;
   }
   & span {
+    width: max-content;
   }
   & > svg {
     height: inherit;
@@ -72,11 +76,13 @@ const StyledToastr = styled.div`
   & > div {
     &:first-of-type {
       display: flex;
+      width: inherit;
       flex-flow: column;
     }
     &:last-of-type {
       position: absolute;
-      right: 12px;
+      top: 4px;
+      right: 4px;
       cursor: pointer;
     }
   }

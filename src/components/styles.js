@@ -300,6 +300,29 @@ export const StyledAuthInnerForm = styled.form`
   & > button {
     margin-top: 18px;
   }
+  & > label:first-of-type {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    align-self: center;
+    margin-bottom: 9px;
+    background-color: ${({ theme }) => theme.colors.secondary};
+    & > img {
+      width: 110%;
+      height: inherit;
+      padding: 0px;
+      object-fit: cover;
+    }
+    & > svg {
+      width: inherit;
+      height: fit-content;
+      padding: 24px;
+    }
+    & > input {
+      display: none;
+    }
+  }
 `;
 export const StyledAuthBanner = styled.main`
   flex: 0.85;

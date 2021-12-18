@@ -8,6 +8,7 @@ import { PostsContext } from "../context/Posts";
 
 function IndexPage() {
   const { posts } = useContext(PostsContext);
+  
   return (
     <Page home>
       <div style={{ display: "flex", flexWrap: "wrap" }}>
