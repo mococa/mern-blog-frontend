@@ -53,11 +53,11 @@ export const errorHandler = (err) => {
 };
 
 /**# Cookies #**/
-export function getCookie(key) {
+export const getCookie = (key) => {
   var b = document.cookie.match("(^|;)\\s*" + key + "\\s*=\\s*([^;]+)");
   return b ? b.pop() : "";
-}
-export function clearAllCookies() {
+};
+export const clearAllCookies = () => {
   document.cookie.replace(/(?<=^|;).+?(?=\=|;|$)/g, (name) =>
     window.location.hostname
       .split(/\.(?=[^.]+\.)/)
@@ -67,4 +67,8 @@ export function clearAllCookies() {
           (document.cookie = `${name}=;max-age=0;path=/;domain=${domain}`)
       )
   );
-}
+};
+
+export const pickOne = (array) => {
+  return array[Math.floor(Math.random() * array.length)];
+};

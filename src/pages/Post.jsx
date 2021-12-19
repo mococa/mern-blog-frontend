@@ -7,6 +7,7 @@ import VotingBar from "../components/VotingBar";
 import CommentSection from "../components/CommentSection";
 import Page from "../components/Page";
 import { getPrettyDate } from "../helpers";
+import { PostsAPI } from "../api/posts";
 
 function PostPage() {
   const { posts } = useContext(PostsContext);
@@ -15,9 +16,19 @@ function PostPage() {
 
   useEffect(() => {
     if (posts) {
-      setPost(posts.find((item) => item.slug === params.slug));
+      const _post = posts.find((item) => item.slug === params.slug);
+      console.log({ _post });
+      setPost(_post);
+      PostsAPI.getById({ id: _post._id }).then(({ data }) => {
+        setPost(data.posts);
+      });
+    } else {
+      PostsAPI.getBySlug({ slug: params.slug }).then(({ data }) => {
+        setPost(data.posts);
+      });
     }
-  }, [posts, params.slug]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <>
       <Page width="80%">

@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { CommentAPI } from "../api/comment";
 import { PostsContext } from "../context/Posts";
 import { UserContext } from "../context/User";
-import { errorHandler, getTime } from "../helpers";
+import { errorHandler, getTime, pickOne } from "../helpers";
 import { useToastr } from "../hooks/Toastr";
+import { TAGS } from "../constants";
 import {
   StyledComment,
   StyledCommentInput,
@@ -27,8 +28,12 @@ function CommentSection({ post }) {
           ?.map((comment) => (
             <StyledComment key={comment._id}>
               <img
-                src={comment.author.profilePicture || "/src/python.svg"}
-                alt="Profile picture"
+                src={
+                  comment.author.profilePicture ||
+                  `/src/${pickOne(TAGS.map((tag) => tag.toLowerCase()))}.svg`
+                }
+                onError={(e) => (e.target.src = "/src/javascript.svg")}
+                alt="Profile"
               />
               <div>
                 <header title={comment.author.name}>
@@ -68,7 +73,13 @@ function CommentSectionInput({ postId }) {
     <StyledCommentInput writing={!!comment}>
       {user ? (
         <>
-          <img src="/src/node.svg" alt="" />
+          <img
+            src={
+              user.profilePicture ||
+              `/src/${pickOne(TAGS.map((tag) => tag.toLowerCase()))}.svg`
+            }
+            alt="profile"
+          />
           <div>
             <span>
               Username: <b>{user.username}</b>
