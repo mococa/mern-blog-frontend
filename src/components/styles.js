@@ -55,12 +55,15 @@ export const StyledSectionRoot = styled.div`
   width: 15%;
   min-height: 80vh;
   @media (max-width: 500px) {
-    padding: 24px 12px;
+    padding: 16px 24px;
     width: 100%;
-    min-width: 100%;
+    min-width: 100vw;
+    margin-left: -12px;
+    margin-bottom: 8px;
     min-height: unset;
-    height: 96px;
+    height: 80px;
     position: sticky;
+    border-radius: 0;
     top: 33px;
     background-color: ${(props) => props.theme.colors.background};
     z-index: 10;

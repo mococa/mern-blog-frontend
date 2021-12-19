@@ -64,6 +64,7 @@ function AuthForm() {
         .then(({ data }) => {
           Toastr.success({ message: data.message });
           changeAction();
+          submitButton.disabled = false;
         })
         .catch((err) => {
           submitButton.disabled = false;
