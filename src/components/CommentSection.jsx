@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CommentAPI } from "../api/comment";
-import { PostsContext } from "../context/Posts";
 import { UserContext } from "../context/User";
 import { errorHandler, getTime, pickOne } from "../helpers";
 import { useToastr } from "../hooks/Toastr";
@@ -15,7 +14,23 @@ import {
 function CommentSection({ post }) {
   const [updatedPost, setUpdatedPost] = useState(post);
   useEffect(() => {
-    if (post) setUpdatedPost(post);
+    if (post) {
+      //? Setting random profile picure to user missing one
+      [
+        ...new Set(post?.comments?.map((comment) => comment?.author?._id)),
+      ].forEach((id) => {
+        const newProfilePic = `/src/${pickOne(
+          TAGS.map((tag) => tag.toLowerCase())
+        )}.svg`;
+        post?.comments?.forEach((comment) => {
+          if (comment.author._id !== id) return;
+          if (!comment.author.profilePicture) {
+            comment.author.profilePicture = newProfilePic;
+          }
+        });
+      });
+      setUpdatedPost(post);
+    }
   }, [post]);
   if (!post) return null;
   const onComment = (comments) => {
