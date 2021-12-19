@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { PostsAPI } from "../api/posts";
 import Header from "../components/Header";
 import Page from "../components/Page";
 import Post from "../components/Post";
@@ -7,12 +8,16 @@ import { Posts } from "../components/styles";
 import { PostsContext } from "../context/Posts";
 
 function IndexPage() {
-  const { posts } = useContext(PostsContext);
-  
+  const { posts, setPosts } = useContext(PostsContext);
+  const onChangeSection = (tag) => {
+    PostsAPI.paginate({ tag }).then(({ data }) => {
+      setPosts(data);
+    });
+  };
   return (
     <Page home>
       <div style={{ display: "flex", flexWrap: "wrap" }}>
-        <Sections />
+        <Sections onChange={onChangeSection} />
         <Posts>
           {posts?.map((post) => (
             <Post
