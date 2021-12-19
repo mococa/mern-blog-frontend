@@ -13,18 +13,25 @@ import {
 } from "./styles";
 
 function CommentSection({ post }) {
+  const [updatedPost, setUpdatedPost] = useState(post);
+  useEffect(() => {
+    if (post) setUpdatedPost(post);
+  }, [post]);
   if (!post) return null;
+  const onComment = (comments) => {
+    setUpdatedPost((_post) => ({ ..._post, comments }));
+  };
   return (
     <>
-      {!post.comments?.length && (
+      {!updatedPost?.comments?.length && (
         <>
           <StyledLabel>No comments yet</StyledLabel>
           <span>Be the first one</span>
         </>
       )}
       <StyledCommentSection>
-        <CommentSectionInput postId={post?._id} />
-        {post.comments
+        <CommentSectionInput postId={post?._id} onComment={onComment} />
+        {updatedPost?.comments
           ?.map((comment) => (
             <StyledComment key={comment._id}>
               <img
@@ -49,22 +56,14 @@ function CommentSection({ post }) {
     </>
   );
 }
-function CommentSectionInput({ postId }) {
+function CommentSectionInput({ postId, onComment = () => {} }) {
   const [comment, setComment] = useState("");
   const { user } = useContext(UserContext);
-  const { posts, setPosts } = useContext(PostsContext);
   const Toastr = useToastr();
   const sendComment = () => {
     CommentAPI.create({ content: comment, postId })
       .then(({ data }) => {
-        setPosts(
-          posts.map((post) => {
-            if (post._id === postId) {
-              post.comments = data;
-            }
-            return post;
-          })
-        );
+        onComment(data);
         setComment("");
       })
       .catch((err) => Toastr.error({ message: errorHandler(err) }));
