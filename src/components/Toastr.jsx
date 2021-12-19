@@ -18,7 +18,7 @@ function ToastrComponent({
   onClose = () => {},
 }) {
   useEffect(() => {
-    setTimeout(() => onClose(id), delay || 20000);
+    setTimeout(() => onClose(id), delay || 5 * 1000);
   }, [id, delay, onClose]);
 
   return (

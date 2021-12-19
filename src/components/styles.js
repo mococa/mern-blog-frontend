@@ -27,6 +27,7 @@ export const StyledHeader = styled.header`
     font-size: 36px;
     width: fit-content;
     margin: auto;
+    text-align: center;
   }
   & > span {
     opacity: 0.7;
@@ -247,7 +248,7 @@ export const StyledCommentInput = styled.div`
 `;
 export const StyledComment = styled.div`
   display: flex;
-  gap: 4px;
+  gap: 8px;
   margin-top: 8px;
   & > img {
     border-radius: 8px;
