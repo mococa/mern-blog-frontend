@@ -61,7 +61,7 @@ export const StyledSectionRoot = styled.div`
     min-height: unset;
     height: 96px;
     position: sticky;
-    top: 34px;
+    top: 33px;
     background-color: ${(props) => props.theme.colors.background};
     z-index: 10;
   }
@@ -145,6 +145,14 @@ export const StyledPostHeader = styled.header`
     border-radius: 8px;
     height: 100%;
     object-fit: cover;
+  }
+  & > header {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 `;
 export const StyledPostContent = styled.section`
