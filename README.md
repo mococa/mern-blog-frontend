@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# MERN Blog Example
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+I made this to train a little more UI designing, responsive UI, CORS, Image upload services, Context API, Mongo, Cookies, Styled-Components and Hashing passwords, cause I was feeling a little awkward with them. Managed to solid up the knowledge and understand better the Stack.
 
-## Available Scripts
+Also, I hosted it all for free on Repl.it and Freenom. Had issues with Cloudflare, so no more cloudflare. Probably their new UI lol.
 
-In the project directory, you can run:
+---
+You can check the demo here:
 
-### `yarn start`
+https://blog.mococa.tk/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<details>
+  <summary>Other repos used:</summary>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  > https://github.com/mococa/mern-blog-cms
 
-### `yarn test`
+  > https://github.com/mococa/mern-blog-frontend
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+</details>
 
-### `yarn build`
+### Cookies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I stored a JWT, called `jwt` to authenticate requests. I kinda got a hate on local storage since last month or so, so I wanted to solidify what I know with cookies and jwt so all my next projects use it.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Also, used a function to clear the cookies on the front-end. Making it easier to deal it sometimes
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `yarn eject`
+### CORS
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+I pretty **ALWAYS** have issues with it, setting up my Express servers. Now, it only accepts requests coming from some URLs on `.env`. Making it more safe.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Context API
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Managed to create my own Toastr notifier with it. I created a custom toastr component with `styled-components` and it worked just as expected. I must admit I got stuck in there a little due to rerendering and managed to solve it setting the state that stores the stack of toastrs differently than I usually do.
 
-## Learn More
+Like this:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```js
+setState((oldState) => changeState(oldState));
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Also used context API to store the blog posts, authentication info and theming
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Styled components
 
-### Analyzing the Bundle Size
+Managed to create a changeable theme with it. I had never tried to make one. Great experience with it and probably gonna use in my future projects. Bye bye Material UI (kidding. maybe not)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+### Mongo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+With mongo, used the populate function and implemented pagination, things which I also never really did. Did not felt much difficulties in there. Regular stuff.
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Hashing password
 
-### Deployment
+Since big companies DB leak, it started to bug me off a little continuing storing passwords as pure unmodified text. Relearnt how to implement it with BCrypt and worked very well
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `yarn build` fails to minify
+### UI
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Although the interface is not **SUPER DUPER COOL**, I'm happy with it. I'd use a website like this.
+
+---
+
+### Images
+
+For this project, I used ImgBB because it's **EXTREMELY** easy to implement as you can check in the code. And then, I store only the returned URL on the database.
