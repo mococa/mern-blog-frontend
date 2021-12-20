@@ -8,7 +8,7 @@ const StyledPage = styled.div`
   flex-flow: ${(props) => (props.row ? "row" : "column")};
   margin: ${(props) => (props.noHeader ? 0 : "24px")}
     calc(100% - ${(props) => props.width});
-  min-height: calc(100vh - ${(props) => (props.noHeader ? "0px" : "48px")});
+  min-height: calc(100vh - ${(props) => (props.noHeader ? "0px" : "150px")});
   @media (max-width: 500px) {
     margin: 12px;
   }

@@ -14,6 +14,7 @@ function IndexPage() {
   );
   const onChangeSection = (tag) => {
     setSection(tag);
+    window.scrollTo({ top: 0, behavior: "smooth" });
     PostsAPI.paginate({ tag }).then(({ data }) => {
       setPosts(data);
     });
