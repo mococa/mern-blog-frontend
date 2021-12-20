@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { UserContext } from "../context/User";
+import Footer from "./Footer";
 import Header, { HeaderHead } from "./Header";
 const StyledPage = styled.div`
   display: flex;
@@ -17,10 +18,15 @@ function Page({ width = 80, home = false, noHeader, row = false, children }) {
   return (
     <>
       {!noHeader &&
-        (home ? <Header username={user?.username} /> : <HeaderHead username={user?.username} />)}
+        (home ? (
+          <Header username={user?.username} />
+        ) : (
+          <HeaderHead username={user?.username} />
+        ))}
       <StyledPage noHeader={noHeader} width={width} row={row}>
         {children}
       </StyledPage>
+      <Footer />
     </>
   );
 }

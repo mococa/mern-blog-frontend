@@ -89,7 +89,13 @@ function AuthForm() {
         <span onClick={changeAction}>
           {action === "signup" ? "Sign in" : "Sign up"}
         </span>
-        <span>GitHub</span>
+        <a
+          href="https://github.com/mococa/mern-blog-api"
+          target="_blank"
+          rel="noreferrer"
+        >
+          GitHub
+        </a>
       </StyledAuthFormHeader>
       <StyledLabel>{action === "signup" ? "Sign Up" : "Sign In"}</StyledLabel>
       <div>

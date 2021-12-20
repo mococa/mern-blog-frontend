@@ -346,3 +346,18 @@ export const StyledAuthBanner = styled.main`
     display: none;
   }
 `;
+export const StyledFooter = styled.footer`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: ${({ theme }) => theme.colors.secondary};
+  margin: 0 !important;
+  padding: 8px 24px;
+
+  & > a {
+    display: block;
+    width: -webkit-fill-available;
+    margin: auto;
+    text-align: center;
+  }
+`;
