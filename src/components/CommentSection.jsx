@@ -10,7 +10,13 @@ import {
   StyledCommentSection,
   StyledLabel,
 } from "./styles";
-
+const getRandomPicture = () => {
+  return `/src/${pickOne(
+    TAGS.filter((tag) => !["DevOps", "SQL"].includes(tag)).map((tag) =>
+      tag.toLowerCase()
+    )
+  )}.svg`;
+};
 function CommentSection({ post }) {
   const [updatedPost, setUpdatedPost] = useState(post);
   useEffect(() => {
@@ -19,9 +25,7 @@ function CommentSection({ post }) {
       [
         ...new Set(post?.comments?.map((comment) => comment?.author?._id)),
       ].forEach((id) => {
-        const newProfilePic = `/src/${pickOne(
-          TAGS.map((tag) => tag.toLowerCase())
-        )}.svg`;
+        const newProfilePic = getRandomPicture();
         post?.comments?.forEach((comment) => {
           if (comment.author._id !== id) return;
           if (!comment.author.profilePicture) {
@@ -50,10 +54,7 @@ function CommentSection({ post }) {
           ?.map((comment) => (
             <StyledComment key={comment._id}>
               <img
-                src={
-                  comment.author.profilePicture ||
-                  `/src/${pickOne(TAGS.map((tag) => tag.toLowerCase()))}.svg`
-                }
+                src={comment.author.profilePicture || getRandomPicture()}
                 onError={(e) => (e.target.src = "/src/javascript.svg")}
                 alt="Profile"
               />
@@ -87,13 +88,7 @@ function CommentSectionInput({ postId, onComment = () => {} }) {
     <StyledCommentInput writing={!!comment}>
       {user ? (
         <>
-          <img
-            src={
-              user.profilePicture ||
-              `/src/${pickOne(TAGS.map((tag) => tag.toLowerCase()))}.svg`
-            }
-            alt="profile"
-          />
+          <img src={user.profilePicture || getRandomPicture()} alt="profile" />
           <div>
             <span>
               Username: <b>{user.username}</b>

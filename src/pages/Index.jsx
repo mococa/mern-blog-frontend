@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { PostsAPI } from "../api/posts";
 import Header from "../components/Header";
 import Page from "../components/Page";
@@ -9,15 +9,26 @@ import { PostsContext } from "../context/Posts";
 
 function IndexPage() {
   const { posts, setPosts } = useContext(PostsContext);
+  const [section, setSection] = useState(
+    sessionStorage.getItem("section") || "All"
+  );
   const onChangeSection = (tag) => {
+    setSection(tag);
     PostsAPI.paginate({ tag }).then(({ data }) => {
       setPosts(data);
     });
   };
+  useEffect(() => {
+    return () => {
+      window.onbeforeunload = function () {
+        sessionStorage.removeItem("section");
+      };
+    };
+  }, []);
   return (
     <Page home>
       <div style={{ display: "flex", flexWrap: "wrap" }}>
-        <Sections onChange={onChangeSection} />
+        <Sections onChange={onChangeSection} initialSection={section} />
         <Posts>
           {posts?.map((post) => (
             <Post
@@ -27,6 +38,7 @@ function IndexPage() {
               title={post.title}
               content={post.content}
               tags={post.tags}
+              section={section}
             />
           ))}
         </Posts>

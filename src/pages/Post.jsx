@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 import VotingBar from "../components/VotingBar";
 import CommentSection from "../components/CommentSection";
 import Page from "../components/Page";
-import { getPrettyDate } from "../helpers";
 import { PostsAPI } from "../api/posts";
 
 function PostPage() {
@@ -15,19 +14,29 @@ function PostPage() {
   const params = useParams();
 
   useEffect(() => {
+    let timer;
+    window.scrollTo(0, 0);
     if (posts) {
       const _post = posts.find((item) => item.slug === params.slug);
-      console.log({ _post });
       setPost(_post);
-      PostsAPI.getById({ id: _post._id }).then(({ data }) => {
-        setPost(data.posts);
-      });
+      timer = setTimeout(() => {
+        if (!params.slug) return;
+        PostsAPI.getById({ id: _post._id }).then(({ data }) => {
+          setPost(data.posts);
+        });
+      }, 1000);
     } else {
       PostsAPI.getBySlug({ slug: params.slug }).then(({ data }) => {
         setPost(data.posts);
       });
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => {
+      clearTimeout(timer);
+      setTimeout(() => {
+        sessionStorage.removeItem("section");
+      }, 1000);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>

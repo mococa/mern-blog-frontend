@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { TAGS } from "../constants";
 import { StyledLabel, StyledSection, StyledSectionRoot } from "./styles";
-
-function Sections({ onChange }) {
-  const [active, setActive] = useState(0);
+const tags = ["All", ...TAGS];
+function Sections({ onChange, initialSection = "All" }) {
+  const [active, setActive] = useState(
+    tags.findIndex((tag) => tag === initialSection)
+  );
   return (
     <StyledSectionRoot>
       <StyledLabel>Tags</StyledLabel>
       <StyledSection nav active={active}>
-        {["All", ...TAGS].map((section, index) => (
+        {tags.map((section, index) => (
           <span
+            key={section}
             onClick={() => {
               setActive(index);
               onChange(section);

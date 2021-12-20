@@ -8,10 +8,10 @@ import {
 import { useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 
-
-function Post({ subject, title, content, slug, tags = [] }) {
+function Post({ subject, title, content, slug, tags = [], section }) {
   const navigate = useNavigate();
   const onClick = () => {
+    sessionStorage.setItem("section", section);
     navigate("/post/" + slug);
   };
   return (
@@ -27,7 +27,7 @@ function Post({ subject, title, content, slug, tags = [] }) {
             h2: "span",
             h3: "span",
             img: "span",
-            hr: "span"
+            hr: "span",
           }}
         >
           {content}
