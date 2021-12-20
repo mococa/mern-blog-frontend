@@ -14,7 +14,7 @@ https://blog.mococa.tk/
 
   > https://github.com/mococa/mern-blog-cms
 
-  > https://github.com/mococa/mern-blog-frontend
+  > https://github.com/mococa/mern-blog-api
 
 </details>
 
