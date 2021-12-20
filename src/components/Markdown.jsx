@@ -7,7 +7,7 @@ export const Markdown = ({ post }) => {
   if (!post) return null;
   const { title, author, content, createdAt } = post;
   return (
-    <div className="markdown-root">
+    <article className="markdown-root">
       <h2>{title}</h2>
       <h5>By {author?.name}</h5>
       <ReactMarkdown
@@ -18,6 +18,6 @@ export const Markdown = ({ post }) => {
       <h4 style={{ textAlign: "right", marginTop: 8 }}>
         {getPrettyDate(createdAt)}
       </h4>
-    </div>
+    </article>
   );
 };
