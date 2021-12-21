@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { HeaderHead } from "../components/Header";
 import { Markdown } from "../components/Markdown";
 import { PostsContext } from "../context/Posts";
 import { useParams } from "react-router-dom";

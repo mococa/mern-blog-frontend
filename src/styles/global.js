@@ -35,7 +35,7 @@ export default createGlobalStyle`
         transition: 100ms;
         font-weight: 600;
         background-color: ${({ theme }) => theme.colors.link};
-        color: ${({ theme }) => (theme.title == "dark" ? "black" : "white")};
+        color: ${({ theme }) => (theme.title === "dark" ? "black" : "white")};
         &:hover{
             filter: brightness(90%);
         }

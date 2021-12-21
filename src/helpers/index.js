@@ -58,7 +58,7 @@ export const getCookie = (key) => {
   return b ? b.pop() : "";
 };
 export const clearAllCookies = () => {
-  document.cookie.replace(/(?<=^|;).+?(?=\=|;|$)/g, (name) =>
+  document.cookie.replace(/(?<=^|;).+?(?==|;|$)/g, (name) =>
     window.location.hostname
       .split(/\.(?=[^.]+\.)/)
       .map((domain) => (domain.startsWith("localhost") ? domain : `.${domain}`))
@@ -67,6 +67,25 @@ export const clearAllCookies = () => {
           (document.cookie = `${name}=;max-age=0;path=/;domain=${domain}`)
       )
   );
+};
+export const deleteAllCookies = () => {
+  const cookies = document.cookie.split(";");
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i];
+    const eqPos = cookie.indexOf("=");
+    const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    const host = window.location.host;
+    document.cookie =
+      name +
+      "=;" +
+      "expires=Thu, 01-Jan-1970 00:00:01 GMT;" +
+      "path=" +
+      "/;" +
+      "domain=" +
+      (host.startsWith("localhost") ? "localhost" : host) +
+      ";" +
+      "secure=;";
+  }
 };
 
 export const pickOne = (array) => {

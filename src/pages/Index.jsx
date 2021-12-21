@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { PostsAPI } from "../api/posts";
-import Header from "../components/Header";
 import Page from "../components/Page";
 import Post from "../components/Post";
 import Sections from "../components/Sections";

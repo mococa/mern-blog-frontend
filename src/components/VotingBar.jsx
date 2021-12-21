@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { PostsAPI } from "../api/posts";
 import { REACTIONS } from "../constants";
-import { PostsContext } from "../context/Posts";
 import { errorHandler } from "../helpers";
 import { useToastr } from "../hooks/Toastr";
 import { StyledEmoji, StyledLabel, StyledVotingBar } from "./styles";

@@ -1,6 +1,6 @@
 import rehypeHighlight from "rehype-highlight";
 import ReactMarkdown from "react-markdown";
-import { getPrettyDate, getTime } from "../helpers";
+import { getPrettyDate } from "../helpers";
 //import remarkGfm from "https://cdn.skypack.dev/remark-gfm@3?dts";
 
 export const Markdown = ({ post }) => {

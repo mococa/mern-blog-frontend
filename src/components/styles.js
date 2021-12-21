@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { shade } from "polished";
 export const StyledHeaderHead = styled.header`
   display: flex;
   position: fixed;

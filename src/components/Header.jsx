@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { ThemeContext } from "../context/Theme";
 import { UserContext } from "../context/User";
-import { clearAllCookies } from "../helpers";
+import { deleteAllCookies } from "../helpers";
 import { StyledHeader, StyledHeaderHead } from "./styles";
 export const HeaderHead = ({ username }) => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -24,7 +24,7 @@ export const HeaderHead = ({ username }) => {
   const loginLogout = () => {
     if (username) {
       //* Logout
-      clearAllCookies();
+      deleteAllCookies();
       setUser(null);
     } else {
       //* Login
@@ -65,7 +65,9 @@ function Header({ username }) {
       <HeaderHead username={username} />
       <StyledHeader>
         <h1>
-          {username ? `Welcome back, ${username.split(' ')[0]} ` : "Hello, stranger"}{" "}
+          {username
+            ? `Welcome back, ${username.split(" ")[0]} `
+            : "Hello, stranger"}{" "}
           <span className="wave">👋</span>
         </h1>
         <span>What would you like to read today?</span>

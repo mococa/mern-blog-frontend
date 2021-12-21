@@ -22,7 +22,7 @@ function AuthForm() {
   useEffect(() => {
     const cookie = getCookie("jwt");
     if (!cookie) setUser(null);
-  }, []);
+  }, [setUser]);
   useEffect(() => {
     if (user) {
       navigate(sessionStorage.getItem("redirect") || "/");
@@ -110,7 +110,7 @@ function AuthForm() {
         {action === "signup" && (
           <label>
             {profilePicture && (
-              <img src={profilePicture} alt="Profile picture" />
+              <img src={profilePicture} alt="Profile" />
             )}
             {!profilePicture && (
               <>
