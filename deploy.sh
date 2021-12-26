@@ -24,6 +24,6 @@ echo "Deploying replit..."
 
 curl -s $API_URL > /dev/null
 
-echo "Done! Check the result here: $(getEnv HOME_PAGE)"
+echo "Done! Check the result here: $(getEnv HOMEPAGE)"
 
 #echo "If deploy has failed, please, visit $API_URL to re-run it."
