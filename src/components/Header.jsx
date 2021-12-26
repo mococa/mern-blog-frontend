@@ -66,7 +66,7 @@ function Header({ username }) {
       <StyledHeader>
         <h1>
           {username
-            ? `Welcome back, ${username.split(" ")[0]} `
+            ? `Welcome back, ${username.split(" ")[0]}`
             : "Hello, stranger"}{" "}
           <span className="wave">👋</span>
         </h1>

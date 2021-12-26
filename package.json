@@ -22,7 +22,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "yarn build && nautilus .",
+    "deploy": "sh ./deploy.sh",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
